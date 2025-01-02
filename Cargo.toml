@@ -1,0 +1,12 @@
+[package]
+name = "organize_file"
+version = "0.1.0"
+edition = "2021"
+authors = ["abdul.azizi@stud.th-deg.de"]
+
+[dependencies]
+clap = { version = "4.5.23", features = ["derive"] }
+walkdir = "2.3"
+[[bin]]
+name = "organize"  # This will make the binary name "organize"
+path = "src/main.rs"
