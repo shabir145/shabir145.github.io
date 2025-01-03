@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organize Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Organize Tool</h1>
+    <p>Effortlessly organize your files in directories.</p>
+  </header>
+
+  <main>
+    <section id="introduction">
+      <h2>About</h2>
+      <p>The Organize Tool helps you manage and sort files in your directories with ease.</p>
+    </section>
+
+    <section id="downloads">
+      <h2>Download</h2>
+      <p>Select your platform to download:</p>
+      <ul>
+        <li><a id="download-linux" href="organize-linux-x86_64.tar.gz" download>Linux (x86_64)</a></li>
+        <li><a id="download-windows" href="organize-windows.zip" download>Windows</a></li>
+      </ul>
+    </section>
+
+    <section id="setup">
+      <h2>Setup Instructions</h2>
+      <h3>For Windows:</h3>
+      <code>setx PATH "%PATH%;C:\path\to\directory" /M</code>
+      <p>Run CMD as administrator.</p>
+
+      <h3>For Linux:</h3>
+      <code>sudo mv /path/to/directory /usr/local/bin/</code>
+      <p>Ensure the directory is accessible globally.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by [Your Name]. View on <a href="https://github.com/yourrepo">GitHub</a>.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
