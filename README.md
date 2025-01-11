@@ -54,4 +54,4 @@ Select your platform to download:
 
 ## About the Creator 👤
 
-Created by **Abdul Aziz Aziz**. View the project on [GitHub](https://shabir145.github.io/).
+Created by **Abdul Aziz Aziz**. View the project (https://shabir145.github.io/).
