@@ -40,4 +40,20 @@ The Organize Tool scans a directory, identifies files by their extensions, and m
 - Unknown file types are placed in a folder named `unknown_file_type`.
 
 ---
+Setup Instructions 🛠️
+For Windows:
+Add the tool to your system PATH:
+cmd
+Copy code
+setx PATH "%PATH%;C:\path\to\directory" /M
+Run CMD as administrator to apply the changes.
+For Linux:
+Move the tool to a globally accessible location:
+bash
+Copy code
+sudo mv /path/to/directory /usr/local/bin/
+Ensure the directory is accessible globally.
+About the Creator 👤
+Created by Abdul Aziz Aziz. View the project on GitHub.
+
 
