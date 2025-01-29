@@ -3,47 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organize Tool</title>
+  <title>Organize Tool 🗂️</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Organize Tool</h1>
+    <h1>Organize Tool 🗂️</h1>
     <p>Effortlessly organize your files in directories.</p>
   </header>
 
-  <main>
-    <section id="introduction">
-      <h2>About</h2>
-      <p>The Organize Tool helps you manage and sort files in your directories with ease.</p>
-    </section>
+  <section id="about">
+    <h2>About 🛠️</h2>
+    <p>The Organize Tool helps you efficiently manage and sort files in your directories. It categorizes files into folders based on their file extensions and can further organize them by the initial letter of the file name. The tool creates descriptive folders like <code>pdf_files_with_a_initial</code> for PDF files starting with the letter "a" and <code>txt_files_with_b_initial</code> for TXT files starting with the letter "b". It also automatically cleans up any empty directories after organizing your files, keeping your file structure clean and clutter-free.</p>
+  </section>
 
-    <section id="downloads">
-      <h2>Download</h2>
-      <p>Select your platform to download:</p>
-      <ul>
-        <li><a id="download-linux" href="organize-linux-x86_64.tar.gz" download>Linux (x86_64)</a></li>
-        <li><a id="download-windows" href="organize-windows.zip" download>Windows</a></li>
-      </ul>
-    </section>
+  <section id="benefits">
+    <h2>Benefits ✨</h2>
+    <ul>
+      <li>⏳ <strong>Time-Saving</strong>: Automatically sorts files by extension and initial, saving you time on manual organization.</li>
+      <li>📁 <strong>Enhanced Organization</strong>: Creates organized directories based on file types and file name initials.</li>
+      <li>🧹 <strong>Clutter-Free</strong>: Cleans up empty directories after organizing your files, keeping your workspace neat.</li>
+      <li>🖥️ <strong>Cross-Platform</strong>: Supports both Linux and Windows environments.</li>
+      <li>👍 <strong>Ease of Use</strong>: Simple setup and intuitive operation.</li>
+    </ul>
+  </section>
 
-    <section id="setup">
-      <h2>Setup Instructions</h2>
-      <h3>For Windows:</h3>
-      <code>setx PATH "%PATH%;C:\path\to\directory" /M</code>
-      <p>Run CMD as administrator.</p>
+  <section id="how-it-works">
+    <h2>How It Works 🔧</h2>
+    <p>The Organize Tool scans a directory, identifies files by their extensions and optionally by the initial letter of the file name, and moves them into corresponding subdirectories. The tool creates descriptive folders for better organization. For example:</p>
+    <ul>
+      <li><code>.txt</code> files go to a folder named <code>txt_files_with_a_initial</code> (for files starting with "a").</li>
+      <li><code>.jpg</code> files go to a folder named <code>jpg_files_with_a_initial</code> (for files starting with "a").</li>
+      <li>Files without a specified initial are placed into folders based solely on their extensions.</li>
+      <li>Any empty directories are automatically removed after the files are organized.</li>
+    </ul>
+  </section>
 
-      <h3>For Linux:</h3>
-      <code>sudo mv /path/to/directory /usr/local/bin/</code>
-      <p>Ensure the directory is accessible globally.</p>
-    </section>
-  </main>
+  <section id="download">
+    <h2>Download 📦</h2>
+    <p>Select your platform to download:</p>
+    <div class="download-buttons">
+      <a href="#" class="btn">Linux</a>
+      <a href="#" class="btn">Windows</a>
+    </div>
+  </section>
 
-  <footer>
-    <p>Created by Abdul Aziz Aziz.</p>
+  <section id="setup">
+    <h2>Setup Instructions 🛠️</h2>
+    <h3>For Linux:</h3>
+    <pre><code>export PATH=$PATH:$HOME/path/to/directory</code></pre>
+    <h3>For Windows:</h3>
+    <pre><code>setx PATH "%PATH%;C:\path\to\directory" /M</code></pre>
+    <p>Note: <code>path/to/directory</code> is the absolute path for the organize executable file where you extract.</p>
+  </section>
+
+  <section id="instructions">
+    <h2>Instructions 📚</h2>
+    <h3>1. Basic Usage (Organize by Extension)</h3>
+    <pre><code>organize /path/to/directory</code></pre>
+    <h3>2. Organize by Initials</h3>
+    <pre><code>organize /path/to/directory -n a</code></pre>
+    <h3>3. Organize by Specific File Extension</h3>
+    <pre><code>organize /path/to/directory --extension pdf</code></pre>
+    <h3>4. Combine Initials and Extension Filters</h3>
+    <pre><code>organize /path/to/directory -n a --extension pdf</code></pre>
+    <h3>5. Automatically Clean Up Empty Directories</h3>
+    <p>The tool will automatically remove any empty directories after organizing your files.</p>
+  </section>
+
+  <footer id="creator">
+    <h2>About the Creator 👤</h2>
+    <p>Created by <strong>Abdul Aziz Azizi</strong>. View the project on <a href="https://shabir145.github.io/" target="_blank">GitHub</a>.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
