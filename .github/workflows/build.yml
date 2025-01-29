@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
@@ -33,7 +33,7 @@ jobs:
           tar -czvf organize_linux_x86_64.tar.gz -C target/x86_64-unknown-linux-gnu/release organize
 
       - name: Upload Linux binary as an artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated to v3
         with:
           name: organize-linux-binary
           path: organize_linux_x86_64.tar.gz
@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
@@ -60,7 +60,7 @@ jobs:
         run: Compress-Archive -Path target\x86_64-pc-windows-gnu\release\organize.exe -DestinationPath organize_windows_x86_64.zip
 
       - name: Upload Windows binary as an artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated to v3
         with:
           name: organize-windows-binary
           path: organize_windows_x86_64.zip
@@ -71,12 +71,12 @@ jobs:
 
     steps:
       - name: Download Linux binary artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3  # Updated to v3
         with:
           name: organize-linux-binary
 
       - name: Download Windows binary artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3  # Updated to v3
         with:
           name: organize-windows-binary
 
