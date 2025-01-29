@@ -21,10 +21,10 @@
     <h2>Benefits ✨</h2>
     <ul>
       <li>⏳ <strong>Time-Saving</strong>: Automatically sorts files by extension and initial, saving you time on manual organization.</li>
-      <li>📁 <strong>Enhanced Organization</strong>: Creates organized directories based on file types and file name initials.</li>
+      <li>📁 <strong>Enhanced Organization</strong>: Creates organized directories based on file types and file name initials (e.g., <code>pdf_files_with_a_initial</code>), giving you a more structured file system.</li>
       <li>🧹 <strong>Clutter-Free</strong>: Cleans up empty directories after organizing your files, keeping your workspace neat.</li>
-      <li>🖥️ <strong>Cross-Platform</strong>: Supports both Linux and Windows environments.</li>
-      <li>👍 <strong>Ease of Use</strong>: Simple setup and intuitive operation.</li>
+      <li>🖥️ <strong>Cross-Platform</strong>: Supports both Linux and Windows environments, making it versatile for different operating systems.</li>
+      <li>👍 <strong>Ease of Use</strong>: Simple setup and intuitive operation, allowing you to quickly organize your files with minimal effort.</li>
     </ul>
   </section>
 
@@ -32,9 +32,10 @@
     <h2>How It Works 🔧</h2>
     <p>The Organize Tool scans a directory, identifies files by their extensions and optionally by the initial letter of the file name, and moves them into corresponding subdirectories. The tool creates descriptive folders for better organization. For example:</p>
     <ul>
-      <li><code>.txt</code> files go to a folder named <code>txt_files_with_a_initial</code> (for files starting with "a").</li>
-      <li><code>.jpg</code> files go to a folder named <code>jpg_files_with_a_initial</code> (for files starting with "a").</li>
-      <li>Files without a specified initial are placed into folders based solely on their extensions.</li>
+      <li><code>.txt</code> files go to a folder named <code>txt_files_with_a_initial</code> (for files starting with "a") or <code>txt_files_with_b_initial</code> (for files starting with "b"), depending on the specified initials.</li>
+      <li><code>.jpg</code> files go to a folder named <code>jpg_files_with_a_initial</code> or <code>jpg_files_with_b_initial</code> (if initials are specified).</li>
+      <li>Files without a specified initial are placed into folders based solely on their extensions (e.g., <code>pdf</code>, <code>txt</code>).</li>
+      <li>If no initials are provided, the files are categorized by their extensions only (e.g., all <code>.pdf</code> files will go into a <code>pdf</code> folder).</li>
       <li>Any empty directories are automatically removed after the files are organized.</li>
     </ul>
   </section>
@@ -43,32 +44,62 @@
     <h2>Download 📦</h2>
     <p>Select your platform to download:</p>
     <div class="download-buttons">
-      <a href="organize-linux-x86_64.tar.gz" class="btn">Linux</a>
-      <a href="organize-windows.zip" class="btn">Windows</a>
+      <a href="organize-linux-x86_64.tar.gz" download class="btn">Download for Linux (TAR.GZ)</a>
+      <a href="organize-windows.zip" download class="btn">Download for Windows (ZIP)</a>
     </div>
   </section>
 
   <section id="setup">
     <h2>Setup Instructions 🛠️</h2>
     <h3>For Linux:</h3>
-    <pre><code>export PATH=$PATH:$HOME/path/to/directory</code></pre>
+    <ol>
+      <li>Move the tool to a globally accessible location:
+        <pre><code>export PATH=$PATH:$HOME/path/to/directory</code></pre>
+      </li>
+      <li>Ensure the directory is accessible globally.</li>
+    </ol>
     <h3>For Windows:</h3>
-    <pre><code>setx PATH "%PATH%;C:\path\to\directory" /M</code></pre>
-    <p>Note: <code>path/to/directory</code> is the absolute path for the organize executable file where you extract.</p>
+    <ol>
+      <li>Add the tool to your system PATH:
+        <pre><code>setx PATH "%PATH%;C:\path\to\directory" /M</code></pre>
+      </li>
+      <li>Run CMD as administrator to apply the changes.</li>
+    </ol>
+    <p><strong>Note:</strong> <code>path/to/directory</code> for both Windows and Linux is the absolute path for the organize executable file where you extract.</p>
   </section>
 
   <section id="instructions">
     <h2>Instructions 📚</h2>
     <h3>1. Basic Usage (Organize by Extension)</h3>
+    <p>To organize files based on their extensions, simply run the tool with the directory you want to organize:</p>
+    <pre><code>organize &lt;directory_path&gt;</code></pre>
+    <p><strong>Example:</strong></p>
     <pre><code>organize /path/to/directory</code></pre>
+    <p>This will organize files into subdirectories based on their extensions (e.g., <code>.txt</code> files will go into a <code>txt</code> folder, <code>.pdf</code> files into a <code>pdf</code> folder).</p>
+
     <h3>2. Organize by Initials</h3>
+    <p>To organize files by both their extension and the initial letter of the file name, use the <code>-n</code> option followed by the initial letter you want to filter by:</p>
+    <pre><code>organize &lt;directory_path&gt; -n &lt;initial&gt;</code></pre>
+    <p><strong>Example:</strong></p>
     <pre><code>organize /path/to/directory -n a</code></pre>
+    <p>This will move all files starting with "a" into their respective extension-based directories (e.g., <code>pdf_files_with_a_initial</code>, <code>txt_files_with_a_initial</code>).</p>
+
     <h3>3. Organize by Specific File Extension</h3>
+    <p>To organize only files of a specific extension, use the <code>--extension</code> option followed by the extension (without the dot):</p>
+    <pre><code>organize &lt;directory_path&gt; --extension &lt;extension&gt;</code></pre>
+    <p><strong>Example:</strong></p>
     <pre><code>organize /path/to/directory --extension pdf</code></pre>
+    <p>This will only move <code>.pdf</code> files into a <code>pdf</code> folder, and ignore other file types.</p>
+
     <h3>4. Combine Initials and Extension Filters</h3>
+    <p>You can combine both the <code>-n</code> (initial) and <code>--extension</code> filters to organize files based on both the initial letter and the extension:</p>
+    <pre><code>organize &lt;directory_path&gt; -n &lt;initial&gt; --extension &lt;extension&gt;</code></pre>
+    <p><strong>Example:</strong></p>
     <pre><code>organize /path/to/directory -n a --extension pdf</code></pre>
+    <p>This will move <code>.pdf</code> files starting with "a" into a <code>pdf_files_with_a_initial</code> folder.</p>
+
     <h3>5. Automatically Clean Up Empty Directories</h3>
-    <p>The tool will automatically remove any empty directories after organizing your files.</p>
+    <p>After organizing your files, the tool will automatically remove any empty directories left behind in the process, ensuring a clutter-free workspace.</p>
   </section>
 
   <footer id="creator">
