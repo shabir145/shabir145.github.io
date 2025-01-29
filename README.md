@@ -69,7 +69,7 @@ organize /path/to/directory
 
 This will organize files into subdirectories based on their extensions (e.g., `.txt` files will go into a `txt` folder, `.pdf` files into a `pdf` folder).
 
-### 2. Organize by Initials (Optional)
+### 2. Organize by Initials
 To organize files by both their extension and the initial letter of the file name, use the `-n` option followed by the initial letter you want to filter by:
 
 ```bash
@@ -84,7 +84,7 @@ organize /path/to/directory -n a
 
 This will move all files starting with "a" into their respective extension-based directories (e.g., `pdf_files_with_a_initial`, `txt_files_with_a_initial`).
 
-### 3. Organize by Specific File Extension (Optional)
+### 3. Organize by Specific File Extension 
 To organize only files of a specific extension, use the `--extension` option followed by the extension (without the dot):
 
 ```bash
