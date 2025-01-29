@@ -48,7 +48,7 @@ Select your platform to download:
 ### For Linux:
 1. Move the tool to a globally accessible location:
     ```bash
-    sudo mv /path/to/directory /usr/local/bin/
+    sudo mv /path/to/directory ~/.local/bin
     ```
 2. Ensure the directory is accessible globally.
 
