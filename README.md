@@ -116,7 +116,7 @@ This will move `.pdf` files starting with "a" into a `pdf_files_with_a_initial` 
 
 ### 5. Automatically Clean Up Empty Directories
 After organizing your files, the tool will automatically remove any empty directories left behind in the process, ensuring a clutter-free workspace.
-```
+
 ## About the Creator 👤
 
 Created by **Abdul Aziz Azizi**. View the project (https://shabir145.github.io/).
