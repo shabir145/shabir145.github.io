@@ -33,20 +33,19 @@ Select your platform to download:
 - **Windows** 
 
 ## Setup Instructions 🛠️
-
+ Add the tool to your system PATH
 ### For Linux:
-1. Move the tool to a globally accessible location:
+Run the bellow command in your Linux terminal.
     ```bash
-    export PATH=$PATH:$HOME/path/to/directory
+    export PATH=$PATH:/path/to/directory
     ```
-2. Ensure the directory is accessible globally.
+
 
 ### For Windows:
-1. Add the tool to your system PATH:
+Run CMD as administrator and run the below command.
     ```bash
     setx PATH "%PATH%;C:\path\to\directory" /M
     ```
-2. Run CMD as administrator to apply the changes.
 
 Note: path/to/directory for both Windows and Linux is the absolute path for the organize executable file where you extract. 
 
