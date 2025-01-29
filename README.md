@@ -50,7 +50,6 @@ Select your platform to download:
 
 Note: path/to/directory for both Windows and Linux is the absolute path for the organize executable file where you extract. 
 
-```markdown
 ## Instructions 📚
 
 To use the Organize Tool, follow these simple steps:
