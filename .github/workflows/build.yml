@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest  # Use an Ubuntu runner for the Linux build
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the repository
@@ -23,7 +23,7 @@ jobs:
 
       - name: Build for Linux
         run: |
-          cargo build --release --target x86_64-unknown-linux-gnu  # Compile for Linux
+          cargo build --release --target x86_64-unknown-linux-gnu
 
       - name: Set execute permission for Linux binary
         run: chmod +x target/x86_64-unknown-linux-gnu/release/organize
@@ -33,13 +33,13 @@ jobs:
           tar -czvf organize_linux_x86_64.tar.gz -C target/x86_64-unknown-linux-gnu/release organize
 
       - name: Upload Linux binary as an artifact
-        uses: actions/upload-artifact@v3  # Updated to v3
+        uses: actions/upload-artifact@v3
         with:
           name: organize-linux-binary
           path: organize_linux_x86_64.tar.gz
 
   build-windows:
-    runs-on: windows-latest  # Use a Windows runner for the Windows build
+    runs-on: windows-latest
 
     steps:
       - name: Checkout the repository
@@ -60,29 +60,45 @@ jobs:
         run: Compress-Archive -Path target\x86_64-pc-windows-gnu\release\organize.exe -DestinationPath organize_windows_x86_64.zip
 
       - name: Upload Windows binary as an artifact
-        uses: actions/upload-artifact@v3  # Updated to v3
+        uses: actions/upload-artifact@v3
         with:
           name: organize-windows-binary
           path: organize_windows_x86_64.zip
 
   create-release:
-    runs-on: ubuntu-latest  # Use Ubuntu runner to create the GitHub release
-    needs: [build-linux, build-windows]  # Ensure the build jobs are successful before this runs
-
+    runs-on: ubuntu-latest
+    needs: [build-linux, build-windows]
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure all tags are fetched
+
+      - name: Get latest tag
+        id: get_version
+        run: echo "TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo v0.1.0)" >> $GITHUB_ENV
+
+      - name: Create new tag
+        run: |
+          NEW_TAG=$(echo $TAG | awk -F. -v OFS=. '{$NF += 1 ; print}')
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+          git tag $NEW_TAG
+          git push origin $NEW_TAG
+
       - name: Download Linux binary artifact
-        uses: actions/download-artifact@v3  # Updated to v3
+        uses: actions/download-artifact@v3
         with:
           name: organize-linux-binary
 
       - name: Download Windows binary artifact
-        uses: actions/download-artifact@v3  # Updated to v3
+        uses: actions/download-artifact@v3
         with:
           name: organize-windows-binary
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ env.NEW_TAG }}
           files: |
             organize_windows_x86_64.zip
             organize_linux_x86_64.tar.gz
