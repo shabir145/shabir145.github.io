@@ -1,0 +1,84 @@
+name: Build for Windows and Linux
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action when changes are pushed to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Also trigger when a PR is created against the 'main' branch
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner for the Linux build
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build for Linux
+        run: |
+          cargo build --release --target x86_64-unknown-linux-gnu  # Compile for Linux
+
+      - name: Create TAR.GZ archive of Linux binary
+        run: |
+          tar -czvf organize_linux_x86_64.tar.gz -C target/x86_64-unknown-linux-gnu/release organize
+
+      - name: Upload Linux binary as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: organize-linux-binary
+          path: organize_linux_x86_64.tar.gz
+
+  build-windows:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner for the Windows build
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Install MinGW for cross-compiling to Windows
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mingw-w64
+
+      - name: Build for Windows
+        run: |
+          rustup target add x86_64-pc-windows-gnu  # Add the Windows target
+          cargo build --release --target x86_64-pc-windows-gnu  # Compile for Windows
+
+      - name: Create ZIP archive of Windows binary
+        run: |
+          zip organize_windows_x86_64.zip target/x86_64-pc-windows-gnu/release/organize.exe
+
+      - name: Upload Windows binary as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: organize-windows-binary
+          path: organize_windows_x86_64.zip
+
+  create-release:
+    runs-on: ubuntu-latest  # Use Ubuntu runner to create the GitHub release
+    needs: [build-linux, build-windows]  # Make sure the build jobs are successful before this runs
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: organize_windows_x86_64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
