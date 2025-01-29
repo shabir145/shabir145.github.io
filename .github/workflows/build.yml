@@ -74,9 +74,15 @@ jobs:
         with:
           fetch-depth: 0  # Ensure all tags are fetched
 
-      - name: Get latest tag
+      - name: Get latest tag or default
         id: get_version
-        run: echo "TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo v0.1.0)" >> $GITHUB_ENV
+        run: |
+          if git describe --tags --abbrev=0 > /dev/null 2>&1; then
+            TAG=$(git describe --tags --abbrev=0)
+          else
+            TAG="v0.1.0"
+          fi
+          echo "TAG=$TAG" >> $GITHUB_ENV
 
       - name: Create new tag
         run: |
@@ -85,7 +91,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git tag $NEW_TAG
-          git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git $NEW_TAG
+          git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git $NEW_TAG
 
       - name: Download Linux binary artifact
         uses: actions/download-artifact@v3
