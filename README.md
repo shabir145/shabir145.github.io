@@ -4,7 +4,7 @@ Effortlessly organize your files in directories.
 
 ## About 🛠️
 
-The Organize Tool helps you efficiently manage and sort files in your directories. It categorizes files into folders based on their file extensions and can further organize them by the initial letter of the file name. The tool creates descriptive folders like ```bash pdf_files_with_a_initial``` for PDF files starting with the letter "a" and ```bash txt_files_with_b_initial``` for TXT files starting with the letter "b". It also automatically cleans up any empty directories after organizing your files, keeping your file structure clean and clutter-free.
+The Organize Tool helps you efficiently manage and sort files in your directories. It categorizes files into folders based on their file extensions and can further organize them by the initial letter of the file name. The tool creates descriptive folders like ``` pdf_files_with_a_initial```  for PDF files starting with the letter "a" and ``` txt_files_with_b_initial``` for TXT files starting with the letter "b". It also automatically cleans up any empty directories after organizing your files, keeping your file structure clean and clutter-free.
 
 ## Benefits ✨
 
