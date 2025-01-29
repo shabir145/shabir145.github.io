@@ -10,14 +10,6 @@ walkdir = "2.3"
 [[bin]]
 name = "organize"  # This will make the binary name "organize"
 path = "src/main.rs"
-[target.x86_64-apple-darwin]
-linker = "o64-clang"
-ar = "x86_64-apple-darwin21.1-ar"
-
-
-[target.aarch64-apple-darwin]
-linker = "aarch64-apple-darwin21.1-clang"
-ar = "aarch64-apple-darwin21.1-ar"
 
 
 
