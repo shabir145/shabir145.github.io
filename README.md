@@ -2,14 +2,6 @@
 
 Effortlessly organize your files in directories.
 
-## Table of Contents
-- [About](#about)
-- [Benefits](#benefits)
-- [How It Works](#how-it-works)
-- [Download](#download)
-- [Setup Instructions](#setup-instructions)
-- [About the Creator](#about-the-creator)
-
 ## About 🛠️
 
 The Organize Tool helps you manage and sort files in your directories with ease. It automatically categorizes files into folders based on their file extensions, making your directories neat and organized.
@@ -33,10 +25,18 @@ The Organize Tool scans a directory, identifies files by their extensions, and m
 
 Select your platform to download:
 
-- **Linux** (x86_64)
-- **Windows**
+- **Linux** 
+- **Windows** 
 
 ## Setup Instructions 🛠️
+
+
+### For Linux:
+1. Move the tool to a globally accessible location:
+    ```bash
+    export PATH=$PATH:$HOME/path/to/directory
+    ```
+2. Ensure the directory is accessible globally.
 
 ### For Windows:
 1. Add the tool to your system PATH:
@@ -45,13 +45,7 @@ Select your platform to download:
     ```
 2. Run CMD as administrator to apply the changes.
 
-### For Linux:
-1. Move the tool to a globally accessible location:
-    ```bash
-    sudo mv /path/to/directory ~/.local/bin
-    ```
-2. Ensure the directory is accessible globally.
-
+Note: path/to/directory for both Windows and Linux is the absolute path for the organize executable file where you extract. 
 ## About the Creator 👤
 
-Created by **Abdul Aziz Aziz**. View the project (https://shabir145.github.io/).
+Created by **Abdul Aziz Azizi**. View the project (https://shabir145.github.io/).
