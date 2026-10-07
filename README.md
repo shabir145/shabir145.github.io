@@ -118,7 +118,7 @@ After organizing your files, the tool will automatically remove any empty direct
 
 ## About the Creator 👤
 
-Created by **Abdul Aziz Azizi**. View the project (https://shabir145.github.io/).
+Created by **Abdul Aziz Azizi Student at DIT, BCs. Health Informatics**. View the project (https://shabir145.github.io/).
 
 
 
