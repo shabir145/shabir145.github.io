@@ -1,4 +1,4 @@
-# Organize Tool 🗂️
+# Organize Tool 
 
 Effortlessly organize your files in directories.
 
