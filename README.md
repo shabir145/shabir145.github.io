@@ -1,5 +1,6 @@
-# Organize Tool for files and directories for Linux, Windows and MacOS
+# Organize Tool for files and directories for Linux and Windows
 Effortlessly organize your files in directories.
+
 
 ## About the application
 
