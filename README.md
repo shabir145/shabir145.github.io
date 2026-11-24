@@ -1,4 +1,4 @@
-# Organize Tool for files and directories
+# Organize Tool for files and directories for Linux and Windwos
 
 Effortlessly organize your files in directories.
 
