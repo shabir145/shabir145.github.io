@@ -94,12 +94,12 @@ jobs:
           git push https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git $NEW_TAG
 
       - name: Download Linux binary artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           name: organize-linux-binary
 
       - name: Download Windows binary artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           name: organize-windows-binary
 
